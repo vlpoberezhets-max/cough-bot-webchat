@@ -161,7 +161,11 @@
     const errorEl = document.getElementById("error");
     const resetBtn = document.getElementById("reset");
     // Use current host for Rasa endpoint so sharing a link works without editing the file.
-    const endpoint = "https://tomi-cistic-thermodynamically.ngrok-free.dev/webhooks/rest/webhook";
+    const params = new URLSearchParams(window.location.search);
+    const endpoint =
+      params.get("endpoint") ||
+      params.get("api") ||
+      "https://tomi-cistic-thermodynamically.ngrok-free.dev/webhooks/rest/webhook";
     const senderId = "webchat-user";
 
     function appendMessage(text, type) {
